@@ -1,6 +1,7 @@
 package BL;
+
 public class Sender {
-    
+
     private String name;
     private double frequenz;
     private String band;
@@ -22,8 +23,5 @@ public class Sender {
     public String getBand() {
         return band;
     }
-    
-    
-    
 
 }

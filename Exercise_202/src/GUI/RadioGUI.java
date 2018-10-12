@@ -1,13 +1,21 @@
 package GUI;
 
+import BL.SenderTableModel;
+import BL.SenderTableRenderer;
+
 /**
  *
  * @author mikeykahr
  */
 public class RadioGUI extends javax.swing.JFrame {
 
+    private SenderTableModel model = new SenderTableModel();
+    
     public RadioGUI() {
         initComponents();
+        jTOut.setModel(model);
+        jTOut.setDefaultRenderer(Object.class, new SenderTableRenderer());
+        jTOut.setShowGrid(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -19,7 +27,7 @@ public class RadioGUI extends javax.swing.JFrame {
         jMhide = new javax.swing.JMenuItem();
         jMshow = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTOut = new javax.swing.JTable();
 
         jMadd.setText("Add");
         jMadd.addActionListener(new java.awt.event.ActionListener() {
@@ -47,7 +55,9 @@ public class RadioGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane1.setComponentPopupMenu(jPopupMenu1);
+
+        jTOut.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,7 +68,8 @@ public class RadioGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTOut.setComponentPopupMenu(jPopupMenu1);
+        jScrollPane1.setViewportView(jTOut);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,15 +86,19 @@ public class RadioGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMaddActionPerformed
-        // TODO add your handling code here:
+       SenderDlg dialog = new SenderDlg(this,true);
+       dialog.setVisible(true);
+       if(dialog.isOk()){
+           model.add(dialog.getS());
+       }
     }//GEN-LAST:event_jMaddActionPerformed
 
     private void jMhideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMhideActionPerformed
-        // TODO add your handling code here:
+       model.setBand(false);
     }//GEN-LAST:event_jMhideActionPerformed
 
     private void jMshowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMshowActionPerformed
-        // TODO add your handling code here:
+        model.setBand(true);
     }//GEN-LAST:event_jMshowActionPerformed
 
     /**
@@ -128,6 +143,6 @@ public class RadioGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMshow;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTOut;
     // End of variables declaration//GEN-END:variables
 }
