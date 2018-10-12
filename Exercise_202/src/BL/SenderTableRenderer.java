@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-public class SenderTableRenderer implements TableCellRenderer{
+public class SenderTableRenderer implements TableCellRenderer {
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -14,16 +14,22 @@ public class SenderTableRenderer implements TableCellRenderer{
         JLabel label = new JLabel();
         label.setOpaque(true);
         Color c;
-        if(s.getBand().equals("FM")){
+        if (s.getBand().equals("FM")) {
             c = Color.red;
-        }else{
+        } else {
             c = Color.blue;
         }
         label.setBackground(c);
-        switch(column){
-            case 0: label.setText(s.getName());break;
-            case 1: label.setText(String.format("%.2f",s.getFrequenz()));break;
-            case 2: label.setText(s.getBand());break;
+        switch (column) {
+            case 0:
+                label.setText(s.getName());
+                break;
+            case 1:
+                label.setText(String.format("%.2f", s.getFrequenz()));
+                break;
+            case 2:
+                label.setText(s.getBand());
+                break;
         }
         return label;
     }

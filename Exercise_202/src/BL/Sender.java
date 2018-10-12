@@ -2,7 +2,7 @@ package BL;
 
 import java.io.Serializable;
 
-public class Sender implements Serializable{
+public class Sender implements Serializable {
 
     private String name;
     private double frequenz;

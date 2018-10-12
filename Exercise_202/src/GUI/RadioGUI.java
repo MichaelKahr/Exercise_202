@@ -16,6 +16,7 @@ public class RadioGUI extends javax.swing.JFrame {
 
     private SenderTableModel model = new SenderTableModel();
     private File f = new File("./data.ser");
+
     public RadioGUI() throws IOException, FileNotFoundException, ClassNotFoundException {
         initComponents();
         jTOut.setModel(model);
@@ -97,15 +98,15 @@ public class RadioGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMaddActionPerformed
-       SenderDlg dialog = new SenderDlg(this,true);
-       dialog.setVisible(true);
-       if(dialog.isOk()){
-           model.add(dialog.getS());
-       }
+        SenderDlg dialog = new SenderDlg(this, true);
+        dialog.setVisible(true);
+        if (dialog.isOk()) {
+            model.add(dialog.getS());
+        }
     }//GEN-LAST:event_jMaddActionPerformed
 
     private void jMhideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMhideActionPerformed
-       model.setBand(false);
+        model.setBand(false);
     }//GEN-LAST:event_jMhideActionPerformed
 
     private void jMshowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMshowActionPerformed

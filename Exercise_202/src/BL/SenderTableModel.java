@@ -59,7 +59,7 @@ public class SenderTableModel extends AbstractTableModel {
 
     public void load(File f) throws FileNotFoundException, IOException, ClassNotFoundException {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-        
+
         Sender s;
 
         try {
